@@ -12,6 +12,10 @@
 		FC5A5C42240EB1C900D11F9C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC5A5C40240EB1C900D11F9C /* Main.storyboard */; };
 		FC5A5C44240EB1CB00D11F9C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FC5A5C43240EB1CB00D11F9C /* Assets.xcassets */; };
 		FC5A5C47240EB1CB00D11F9C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC5A5C45240EB1CB00D11F9C /* LaunchScreen.storyboard */; };
+		FC5A5C50240EB49C00D11F9C /* WeatherModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC5A5C4F240EB49C00D11F9C /* WeatherModel.swift */; };
+		FC5A5C53240EB52A00D11F9C /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC5A5C52240EB52A00D11F9C /* NetworkService.swift */; };
+		FC5A5C56240EC1E300D11F9C /* URLApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC5A5C55240EC1E300D11F9C /* URLApi.swift */; };
+		FC5A5C58240EC2F900D11F9C /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = FC5A5C57240EC2F900D11F9C /* .gitignore */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +26,10 @@
 		FC5A5C43240EB1CB00D11F9C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FC5A5C46240EB1CB00D11F9C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FC5A5C48240EB1CB00D11F9C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FC5A5C4F240EB49C00D11F9C /* WeatherModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherModel.swift; sourceTree = "<group>"; };
+		FC5A5C52240EB52A00D11F9C /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		FC5A5C55240EC1E300D11F9C /* URLApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLApi.swift; sourceTree = "<group>"; };
+		FC5A5C57240EC2F900D11F9C /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -40,6 +48,7 @@
 			children = (
 				FC5A5C3B240EB1C900D11F9C /* WeatherTestApp */,
 				FC5A5C3A240EB1C900D11F9C /* Products */,
+				FC5A5C57240EC2F900D11F9C /* .gitignore */,
 			);
 			sourceTree = "<group>";
 		};
@@ -55,13 +64,40 @@
 			isa = PBXGroup;
 			children = (
 				FC5A5C3C240EB1C900D11F9C /* AppDelegate.swift */,
-				FC5A5C3E240EB1C900D11F9C /* ViewController.swift */,
-				FC5A5C40240EB1C900D11F9C /* Main.storyboard */,
+				FC5A5C54240EB52F00D11F9C /* Networking */,
+				FC5A5C51240EB49F00D11F9C /* Model */,
+				FC5A5C4E240EB3C900D11F9C /* FirstViewController */,
 				FC5A5C43240EB1CB00D11F9C /* Assets.xcassets */,
 				FC5A5C45240EB1CB00D11F9C /* LaunchScreen.storyboard */,
 				FC5A5C48240EB1CB00D11F9C /* Info.plist */,
 			);
 			path = WeatherTestApp;
+			sourceTree = "<group>";
+		};
+		FC5A5C4E240EB3C900D11F9C /* FirstViewController */ = {
+			isa = PBXGroup;
+			children = (
+				FC5A5C3E240EB1C900D11F9C /* ViewController.swift */,
+				FC5A5C40240EB1C900D11F9C /* Main.storyboard */,
+			);
+			path = FirstViewController;
+			sourceTree = "<group>";
+		};
+		FC5A5C51240EB49F00D11F9C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				FC5A5C4F240EB49C00D11F9C /* WeatherModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		FC5A5C54240EB52F00D11F9C /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				FC5A5C52240EB52A00D11F9C /* NetworkService.swift */,
+				FC5A5C55240EC1E300D11F9C /* URLApi.swift */,
+			);
+			path = Networking;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -122,6 +158,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FC5A5C58240EC2F900D11F9C /* .gitignore in Resources */,
 				FC5A5C47240EB1CB00D11F9C /* LaunchScreen.storyboard in Resources */,
 				FC5A5C44240EB1CB00D11F9C /* Assets.xcassets in Resources */,
 				FC5A5C42240EB1C900D11F9C /* Main.storyboard in Resources */,
@@ -136,6 +173,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				FC5A5C3F240EB1C900D11F9C /* ViewController.swift in Sources */,
+				FC5A5C56240EC1E300D11F9C /* URLApi.swift in Sources */,
+				FC5A5C50240EB49C00D11F9C /* WeatherModel.swift in Sources */,
+				FC5A5C53240EB52A00D11F9C /* NetworkService.swift in Sources */,
 				FC5A5C3D240EB1C900D11F9C /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

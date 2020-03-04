@@ -29,14 +29,6 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VLS-E4-IMg">
-                                <rect key="frame" x="158.5" y="470" width="58" height="36"/>
-                                <color key="backgroundColor" red="0.17254901959999999" green="0.1764705882" blue="0.18039215689999999" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <state key="normal" title="Далее">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Сегодня вторник" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sWN-8q-KXc">
                                 <rect key="frame" x="119.5" y="93" width="136" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -67,14 +59,22 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="highlightedColor" cocoaTouchSystemColor="darkTextColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VLS-E4-IMg">
+                                <rect key="frame" x="158" y="364" width="58" height="36"/>
+                                <color key="backgroundColor" red="0.17254901959999999" green="0.1764705882" blue="0.18039215689999999" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Далее">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.21255490241539476" green="0.71613784833802252" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="Qy9-8S-RF4" firstAttribute="top" secondItem="oLn-po-rWp" secondAttribute="bottom" constant="60" id="1lN-hN-rWG"/>
                             <constraint firstItem="sWN-8q-KXc" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="1o1-uJ-yLu"/>
                             <constraint firstItem="sWN-8q-KXc" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="73" id="34s-KH-lHR"/>
+                            <constraint firstItem="VLS-E4-IMg" firstAttribute="top" secondItem="Iff-0x-jkR" secondAttribute="bottom" constant="56" id="DxX-um-gNT"/>
                             <constraint firstItem="Iff-0x-jkR" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="E62-o9-m5L"/>
-                            <constraint firstItem="E4l-JN-7h2" firstAttribute="top" secondItem="VLS-E4-IMg" secondAttribute="bottom" constant="94" id="EaK-7Z-Hlu"/>
                             <constraint firstItem="ypF-rG-ak9" firstAttribute="top" secondItem="Qy9-8S-RF4" secondAttribute="bottom" constant="8" id="H0B-9i-9dH"/>
                             <constraint firstItem="E4l-JN-7h2" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="I4Z-P6-grW"/>
                             <constraint firstItem="VLS-E4-IMg" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="JuH-LO-2So"/>
@@ -98,6 +98,21 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="136.80000000000001" y="97.601199400299862"/>
+        </scene>
+        <!--Second View Controller-->
+        <scene sceneID="fmG-gR-d5g">
+            <objects>
+                <viewController id="cbx-5h-die" customClass="SecondViewController" customModule="WeatherTestApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="whf-Js-ql7">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="fig-tS-oE6"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2P0-c0-Zcn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1025" y="94"/>
         </scene>
     </scenes>
 </document>

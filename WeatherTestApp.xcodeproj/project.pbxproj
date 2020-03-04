@@ -14,8 +14,9 @@
 		FC5A5C47240EB1CB00D11F9C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC5A5C45240EB1CB00D11F9C /* LaunchScreen.storyboard */; };
 		FC5A5C50240EB49C00D11F9C /* WeatherModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC5A5C4F240EB49C00D11F9C /* WeatherModel.swift */; };
 		FC5A5C53240EB52A00D11F9C /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC5A5C52240EB52A00D11F9C /* NetworkService.swift */; };
-		FC5A5C56240EC1E300D11F9C /* URLApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC5A5C55240EC1E300D11F9C /* URLApi.swift */; };
 		FC5A5C58240EC2F900D11F9C /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = FC5A5C57240EC2F900D11F9C /* .gitignore */; };
+		FC5A5C5A240ECC5200D11F9C /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC5A5C59240ECC5200D11F9C /* SecondViewController.swift */; };
+		FC5A5C5D240FE3F400D11F9C /* URLBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC5A5C5C240FE3F400D11F9C /* URLBuilder.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,8 +29,9 @@
 		FC5A5C48240EB1CB00D11F9C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FC5A5C4F240EB49C00D11F9C /* WeatherModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherModel.swift; sourceTree = "<group>"; };
 		FC5A5C52240EB52A00D11F9C /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
-		FC5A5C55240EC1E300D11F9C /* URLApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLApi.swift; sourceTree = "<group>"; };
 		FC5A5C57240EC2F900D11F9C /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		FC5A5C59240ECC5200D11F9C /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
+		FC5A5C5C240FE3F400D11F9C /* URLBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLBuilder.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +69,7 @@
 				FC5A5C54240EB52F00D11F9C /* Networking */,
 				FC5A5C51240EB49F00D11F9C /* Model */,
 				FC5A5C4E240EB3C900D11F9C /* FirstViewController */,
+				FC5A5C5B240ECC5700D11F9C /* SecondViewController */,
 				FC5A5C43240EB1CB00D11F9C /* Assets.xcassets */,
 				FC5A5C45240EB1CB00D11F9C /* LaunchScreen.storyboard */,
 				FC5A5C48240EB1CB00D11F9C /* Info.plist */,
@@ -95,9 +98,17 @@
 			isa = PBXGroup;
 			children = (
 				FC5A5C52240EB52A00D11F9C /* NetworkService.swift */,
-				FC5A5C55240EC1E300D11F9C /* URLApi.swift */,
+				FC5A5C5C240FE3F400D11F9C /* URLBuilder.swift */,
 			);
 			path = Networking;
+			sourceTree = "<group>";
+		};
+		FC5A5C5B240ECC5700D11F9C /* SecondViewController */ = {
+			isa = PBXGroup;
+			children = (
+				FC5A5C59240ECC5200D11F9C /* SecondViewController.swift */,
+			);
+			path = SecondViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -172,11 +183,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FC5A5C5A240ECC5200D11F9C /* SecondViewController.swift in Sources */,
 				FC5A5C3F240EB1C900D11F9C /* ViewController.swift in Sources */,
-				FC5A5C56240EC1E300D11F9C /* URLApi.swift in Sources */,
 				FC5A5C50240EB49C00D11F9C /* WeatherModel.swift in Sources */,
 				FC5A5C53240EB52A00D11F9C /* NetworkService.swift in Sources */,
 				FC5A5C3D240EB1C900D11F9C /* AppDelegate.swift in Sources */,
+				FC5A5C5D240FE3F400D11F9C /* URLBuilder.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

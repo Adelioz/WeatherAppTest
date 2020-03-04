@@ -23,14 +23,25 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let url = URL(string: "https://api.darksky.net/forecast/6d86ccda003a203ff6664ea8df2861c1/37.8267,-122.4233")
-        let task = URLSession.shared.dataTask(with: url!) { (data, response, error) in
-            guard let data = data else { print("error"); return }
-            
-            print(data)
-        }
-        task.resume()
+        let urlString = String(format: "%@+%@", "Kazan", "8a335d2249676ad7e019ba340c5191e3")
         
+        let formatted = urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+        print(formatted)
+        
+        setupDate()
+        
+    }
+    
+    func setupDate() {
+        let date = Date()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "EEEE"
+        dateFormatter.locale = Locale(identifier: "ru_RU")
+        todayLabel.text = "Сегодня " + dateFormatter.string(from: date)
+        print(dateFormatter.string(from: date))
+        dateFormatter.dateFormat = "d MMMM yyyy"
+        dateLabel.text = dateFormatter.string(from: date)
+        print(dateFormatter.string(from: date))
     }
 
 

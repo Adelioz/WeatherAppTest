@@ -10,21 +10,36 @@ import UIKit
 
 class SecondViewController: UIViewController {
 
+    
+    @IBOutlet weak var tempLabel: UILabel!
+    @IBOutlet weak var descrLabel: UILabel!
+    @IBOutlet weak var perceivedLabel: UILabel!
+    @IBOutlet weak var humidityLabel: UILabel!
+    
+    var currentWeather: WeatherModel!
+    var city: String!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        setupCurrentWeather()
+        
+    }
+    
+    func requestWeather() {
+        
+        
+    }
+    
+    
+    func setupCurrentWeather() {
+        
+        tempLabel.text = String(Int(currentWeather.main.temp - 273))
+        print(currentWeather.name)
+        
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
+   
 
 }

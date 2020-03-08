@@ -27,21 +27,6 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
-        let build = URLBuilder()
-//        request.request(urlString: build.buildURL(city: "Kazan")!) { (weatherModel, error) in
-//
-//            if let error = error {
-//                print(error)
-//            }
-//
-//            guard let model = weatherModel else { print(error!); return }
-//
-//            print(model.name)
-//
-//        }
-        
         setupDate()
         
     }
@@ -82,8 +67,10 @@ class ViewController: UIViewController {
             
             switch result {
             case .noNetwork:
+                self.showAlert(code: 0)
                 print("pizdec")
             case .noLocation:
+                self.showAlert(code: 1)
                 print("pizdec nahui")
             case .result(let model):
                 print("aaaaaaa \(model.name)")
@@ -107,6 +94,20 @@ class ViewController: UIViewController {
             
             
         }
+    }
+    
+    func showAlert(code: Int) {
+        
+        var alert = UIAlertController()
+        
+        if code == 0 {
+            alert = UIAlertController(title: "че-то не то", message: "интернет не работает!", preferredStyle: .alert)
+        } else {
+            alert = UIAlertController(title: "че-то не то", message: "а такого города нет!", preferredStyle: .alert)
+        }
+        let action = UIAlertAction(title: "Закрыть", style: .default, handler: nil)
+        alert.addAction(action)
+        present(alert, animated: true)
     }
     
     

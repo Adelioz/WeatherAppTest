@@ -35,7 +35,10 @@ class SecondViewController: UIViewController {
     func setupCurrentWeather() {
         
         tempLabel.text = String(Int(currentWeather.main.temp - 273))
-        print(currentWeather.name)
+        descrLabel.text = "\(currentWeather.weather.last!.main), \(currentWeather.weather.last!.description)"
+        perceivedLabel.text = "Ощущается: \(Int(currentWeather.main.feels_like - 273))° C"
+        humidityLabel.text = "Влажность: \(currentWeather.main.humidity)%"
+        tempLabel.sizeToFit()
         
     }
     

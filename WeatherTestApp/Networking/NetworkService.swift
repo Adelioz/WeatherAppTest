@@ -17,7 +17,7 @@ enum RequestResult {
 
 class NetworkService {
     
-//    var task: URLSessionDataTask? = nil
+
     var url: URL
     
     init(url: URL) {
@@ -25,21 +25,17 @@ class NetworkService {
     }
     
     func request(completion: @escaping (RequestResult) -> Void) {
-//        task?.cancel()
         
         URLSession.shared.dataTask(with: url, completionHandler: { (data, response, error) in
             
             var result: RequestResult
             
-            if let error = error {
-                print("error")
-                return
-            }
-            
             if let error = error as NSError?, error.code == -999 {
+                print(error)
                 result = .noNetwork
             } else if let httpResponse = response as? HTTPURLResponse{
                 if httpResponse.statusCode == 200{
+                    print(response)
                     result = .result(self.parseJSON(data: data!))
                 } else {
                     result = .noLocation

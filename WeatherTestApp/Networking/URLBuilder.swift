@@ -25,4 +25,17 @@ class URLBuilder {
         
     }
     
+    func buildForecastURL(city: String) -> URL? {
+        
+        var urlComp = URLComponents()
+        
+        urlComp.scheme = "https"
+        urlComp.host = "samples.openweathermap.org"
+        urlComp.path = "/data/2.5/forecast"
+        urlComp.queryItems = [URLQueryItem(name: "q", value: city), URLQueryItem(name: "appid", value: apiKey)]
+        
+        return urlComp.url
+        
+    }
+    
 }

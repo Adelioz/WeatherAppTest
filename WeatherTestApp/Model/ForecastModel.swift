@@ -16,7 +16,7 @@ struct ForecastModel: Decodable {
 struct List: Decodable {
     var dt: Double
     var main: MainForecast
-    var weather: WeatherForecast
+    var weather: [WeatherForecast]
 }
 
 struct MainForecast: Decodable {
@@ -26,4 +26,5 @@ struct MainForecast: Decodable {
 
 struct WeatherForecast: Decodable {
     var id: Int
+    var icon: String
 }

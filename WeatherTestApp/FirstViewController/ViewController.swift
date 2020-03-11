@@ -23,11 +23,13 @@ class ViewController: UIViewController {
     let geocoder = CLGeocoder()
     //let networkService = NetworkService()
     let urlBuilder = URLBuilder()
+    var forecastResult: ForecastModel!
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setupDate()
+        nextButton.isHidden = true
         
     }
     
@@ -36,7 +38,7 @@ class ViewController: UIViewController {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "EEEE"
         dateFormatter.locale = Locale(identifier: "ru_RU")
-        todayLabel.text = "Сегодня " + dateFormatter.string(from: date)
+        todayLabel.text = "Сегодня " + dateFormatter.string(from: date) + ","
         print(dateFormatter.string(from: date))
         dateFormatter.dateFormat = "d MMMM yyyy"
         dateLabel.text = dateFormatter.string(from: date)
@@ -60,24 +62,35 @@ class ViewController: UIViewController {
             return
         }
         
-        guard let url = URLBuilder().buildURL(city: city) else { return }
-        let networkService = NetworkService(url: url)
+        guard let urlCurr = URLBuilder().buildURL(city: city) else { return }
+        guard let urlForecast = URLBuilder().buildForecastURL(city: city) else { return }
+        let networkServiceWeather = NetworkService<WeatherModel>(url: urlCurr)
+        let networkServiceForecast = NetworkService<ForecastModel>(url: urlForecast)
         
-        networkService.request { result in
+        networkServiceWeather.request { result in
             
             switch result {
             case .noNetwork:
                 self.showAlert(code: 0)
-                print("pizdec")
             case .noLocation:
                 self.showAlert(code: 1)
-                print("pizdec nahui")
             case .result(let model):
-                print("aaaaaaa \(model.name)")
                 self.performSegue(withIdentifier: "weatherSegue", sender: model)
                 return
             }
             
+        }
+        
+        networkServiceForecast.request { (result) in
+            switch result {
+                
+            case .noNetwork:
+                self.showAlert(code: 0)
+            case .noLocation:
+                self.showAlert(code: 1)
+            case .result(let model):
+                self.forecastResult = model
+            }
         }
         
         
@@ -88,11 +101,8 @@ class ViewController: UIViewController {
         if segue.identifier == "weatherSegue" {
             let navController = segue.destination as! UINavigationController
             let secondViewController = navController.topViewController as! SecondViewController
-            secondViewController.currentWeather = sender as! WeatherModel
-            //secondViewController.city = cityTextField.text!
-            //secondViewController.currentWeather = sender as? WeatherModel
-            
-            
+            secondViewController.currentWeather = sender as? WeatherModel
+            secondViewController.forecastWeather = forecastResult
         }
     }
     
@@ -128,7 +138,7 @@ extension ViewController: CLLocationManagerDelegate {
             locationManager.requestWhenInUseAuthorization()
         }
         if CLLocationManager.authorizationStatus() == .denied || CLLocationManager.authorizationStatus() == .restricted {
-            
+            showLocationAlert()
             // TODO: show Error / alert and how to check permissions
         }
     }
@@ -139,7 +149,7 @@ extension ViewController: CLLocationManagerDelegate {
             setupLocationManager()
             checkLocationAuthorization()
         } else {
-            
+            showLocationAlert()
             //TODO: Show Error / alert and how to turn on services
         }
     }
@@ -155,6 +165,7 @@ extension ViewController: CLLocationManagerDelegate {
     
     func getLocation() {
         checkLocationServices()
+        cityTextField.text = ""
         locationManager.requestLocation()
     }
     
@@ -179,6 +190,7 @@ extension ViewController: CLLocationManagerDelegate {
                 
                 DispatchQueue.main.async {
                     self.cityTextField.text = cityName
+                    self.nextButton.isHidden = false
                     print(cityName)
                 }
                 
@@ -190,6 +202,29 @@ extension ViewController: CLLocationManagerDelegate {
 
 
 
+    }
+    
+    func showLocationAlert() {
+        let alert = UIAlertController(title: "Гео выключены", message: "включите геолокации", preferredStyle: .alert)
+        let action = UIAlertAction(title: "Закрыть", style: .default, handler: nil)
+        alert.addAction(action)
+        present(alert, animated: true)
+    }
+    
+}
+
+extension ViewController: UITextFieldDelegate {
+    
+
+    
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        nextButton.isHidden = textField.text == nil ? true : textField.text!.count == 0
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
     
 }

@@ -9,13 +9,13 @@
 import Foundation
 import UIKit
 
-enum RequestResult {
+enum RequestResult<T> {
     case noNetwork
     case noLocation
-    case result(WeatherModel)
+    case result(T)
 }
 
-class NetworkService {
+class NetworkService<T> where T: Decodable {
     
 
     var url: URL
@@ -24,18 +24,17 @@ class NetworkService {
         self.url = url
     }
     
-    func request(completion: @escaping (RequestResult) -> Void) {
+    func request(completion: @escaping (RequestResult<T>) -> Void) {
         
         URLSession.shared.dataTask(with: url, completionHandler: { (data, response, error) in
             
-            var result: RequestResult
+            var result: RequestResult<T>
             
             if let error = error as NSError?, error.code == -999 {
                 print(error)
                 result = .noNetwork
             } else if let httpResponse = response as? HTTPURLResponse{
                 if httpResponse.statusCode == 200{
-                    print(response)
                     result = .result(self.parseJSON(data: data!))
                 } else {
                     result = .noLocation
@@ -47,53 +46,11 @@ class NetworkService {
             DispatchQueue.main.async {
                 completion(result)
             }
-            
-            
         }).resume()
-        
-        
-        
-        
-        
     }
-
     
-//    func request(urlString: URL, completion: @escaping (WeatherModel?, Error?) -> Void) {
-//        //guard let url = URL(string: urlString) else { return }
-//        URLSession.shared.dataTask(with: urlString) { (data, response, error) in
-//
-//
-//                if let error = error {
-//                    print("error")
-//                    completion(nil, error)
-//                }
-//
-//                guard let data = data else { return }
-//
-//                let result = self.parseJSON(data: data)
-//
-//                DispatchQueue.main.async {
-//                    completion(result, nil)
-//                }
-//
-//
-////                do {
-////                    let weather = try JSONDecoder().decode(WeatherModel.self, from: data)
-////                    completion(weather, nil)
-////                } catch {
-////                    print("failedJSON!!!!")
-////                    completion(nil, error)
-////                }
-//
-//
-//
-//
-//        }.resume()
-//    }
-    
-    
-    func parseJSON(data: Data) -> WeatherModel {
-        return try! JSONDecoder().decode(WeatherModel.self, from: data)
+    func parseJSON(data: Data) -> T {
+        return try! JSONDecoder().decode(T.self, from: data)
     }
     
 }

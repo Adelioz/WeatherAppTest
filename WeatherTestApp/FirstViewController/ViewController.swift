@@ -156,6 +156,12 @@ extension ViewController: CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("error: \(error)")
+        let alert = UIAlertController(title: error.localizedDescription,
+                                      message: "Что-то пошло не так.",
+                                      preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default,
+                                      handler: nil))
+        present(alert, animated: true, completion: nil)
     }
     
     
@@ -197,7 +203,7 @@ extension ViewController: CLLocationManagerDelegate {
             }
             
         } else {
-            print("xuilo")
+            print("ОШИБКА")
         }
 
 
